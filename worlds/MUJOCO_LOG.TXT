@@ -1,0 +1,28 @@
+Thu Nov 20 19:26:41 2025
+ERROR: Load model error: Error: repeated name 'incline' in geom
+
+Thu Nov 20 19:29:03 2025
+ERROR: Load model error: XML Error: bad format in attribute 'pos'
+Element 'geom', line 56
+
+
+Thu Nov 20 19:29:10 2025
+ERROR: Load model error: XML Error: bad format in attribute 'pos'
+Element 'geom', line 56
+
+
+Thu Nov 20 20:09:10 2025
+ERROR: Load model error: Error: repeated name 'ramp_down' in body
+
+Sat Nov 22 13:48:56 2025
+ERROR: Load model error: Error: repeated name 'ramp_down5' in body
+
+Sat Nov 22 18:22:20 2025
+ERROR: Load model error: Error: repeated name 'stepfield' in body
+
+Sat Nov 22 18:43:20 2025
+ERROR: Load model error: Error: repeated name 'step_10' in geom
+
+Sat Nov 22 18:43:41 2025
+ERROR: Load model error: Error: repeated name 'step_10' in geom
+

@@ -1,0 +1,19 @@
+<mujoco model="rbsummit_world">
+
+  <include file="../models/rbsummit/rbsummit.xml"/>
+  
+  <option timestep="0.002"/>
+
+  <worldbody>
+
+    <light diffuse=".5 .5 .5" pos="0 0 5" dir="0 0 -1" />
+    <!-- Ground -->
+    <geom name="floor" type="plane" pos="0 0 0" size="20 20 0.1" rgba="0.8 0.8 0.8 1"/>
+
+    <!-- Obstacles -->
+    <geom name="wall1" type="box" pos="3 0 1" size="0.1 2 1" rgba="0.2 0.2 0.2 1"/>
+    <geom name="ramp1" type="box" pos="1 0 0.15" size="0.5 0.5 0.15" euler="0 0.4 0"/>
+    
+  </worldbody>
+  
+</mujoco>

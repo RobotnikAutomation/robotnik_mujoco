@@ -1,0 +1,505 @@
+<mujoco model="nist arenas world">
+
+  <include file="../models/rbsummit/rbsummit.xml"/>
+
+  <option gravity="0 0 -9.81" timestep="0.002"/>
+
+  <visual>
+    <global azimuth="135" elevation="-25"/>
+  </visual>
+
+  <asset>
+    <!-- Simple textures -->
+    <texture name="ground_tex" type="2d" builtin="checker"
+             rgb1="0.8 0.8 0.8" rgb2="0.7 0.7 0.7"
+             width="512" height="512"/>
+    <material name="ground_mat" texture="ground_tex"
+              reflectance="0.1" specular="0.1" shininess="0.2"/>
+
+    <material name="ramp_mat" rgba="0.6 0.8 1.0 1"/>
+    <material name="gap_mat"  rgba="0.5 0.5 0.5 1"/>
+    <material name="step_mat" rgba="0.8 0.7 0.5 1"/>
+  </asset>
+
+  <worldbody>
+
+    <!-- Directional light in angle -->
+    <light pos="4 -4 6" dir="-1 1 -2"
+           diffuse="1 1 1" ambient="0.3 0.3 0.3"
+           directional="true" castshadow="true"/>
+
+    <!-- Base plane 10 x 10 m -->
+    <geom name="base_plane" type="plane"
+          size="20 10 0.1"
+          material="ground_mat"
+          friction="1.0 0.1 0.01"/>
+
+    <!-- ====================================================== -->
+    <!-- 1) NIST incline test                                   -->
+    <!--    angles in rad                                       -->
+    <!-- ====================================================== -->
+    
+    <!-- 5 deg -->
+    <body name="ramp_up" pos="2.0 2.0 0.08715">      
+      <geom name="iup"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.087266667 0"
+            friction="0.8 0.1 0.01"/>
+            <!-- rotation on Y axis, in grads -->
+            <!-- euler="0 -0.087266667 0" -->
+    </body>
+    <geom name="ramp_top"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="3.9962 2.0 0.1743"
+          material="ground_mat"/>    
+    <body name="ramp_down" pos="5.9924 2.0 0.08715">
+      <geom name="idown"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.087266667 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <!-- 10 deg -->
+    <body name="ramp_up2" pos="8.0 2.0 0.1736">
+      <geom name="iup2"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.1745 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top2"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="9.9848 2.0 0.3473"
+          material="ground_mat"/>
+    <body name="ramp_down2" pos="11.9696 2.0 0.1736">
+      <geom name="idown2"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.1745 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <!-- 15 deg -->
+    <body name="ramp_up3" pos="14.0 2.0 0.2588">
+      <geom name="iup3"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.2618 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top3"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="15.9659 2.0 0.5176"
+          material="ground_mat"/>
+    <body name="ramp_down3" pos="17.9319 2.0 0.2588">
+      <geom name="idown3"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.2618 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+	<!---------- 2nd row ---------->
+    <!-- 20 deg -->
+    <body name="ramp_up4" pos="2.0 5.0 0.3420">      
+      <geom name="iup4"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.349066 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top4"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="3.9397 5.0 0.6840"
+          material="ground_mat"/>    
+    <body name="ramp_down4" pos="5.8790 5.0 0.3420">
+      <geom name="idown4"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.349066 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <!-- pos="3.8793 3.0 0.6840" -->
+
+    <!-- 25 deg -->
+    <body name="ramp_up5" pos="8.0 5.0 0.4226">      
+      <geom name="iup5"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.4363 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top5"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="9.9063 5.0 0.8452"
+          material="ground_mat"/>    
+    <body name="ramp_down5" pos="11.8126 5.0 0.4226">
+      <geom name="idown5"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.4363 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+    <!-- 30 deg -->
+    <body name="ramp_up6" pos="14.0 5.0 0.5">      
+      <geom name="iup6"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.5236 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top6"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="15.8660 5.0 1.0"
+          material="ground_mat"/>    
+    <body name="ramp_down6" pos="17.7321 5.0 0.5">
+      <geom name="idown6"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.5236 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+
+	<!---------- 3rd row ---------->
+    <!-- 35 deg -->
+    <body name="ramp_up7" pos="2.0 8.0 0.5735">      
+      <geom name="iup7"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.6109 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top7"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="3.8192 8.0 1.1471"
+          material="ground_mat"/>    
+    <body name="ramp_down7" pos="5.6382 8.0 0.5735">
+      <geom name="idown7"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.6109 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+    <!-- 40 deg -->
+    <body name="ramp_up8" pos="8.0 8.0 0.6428">      
+      <geom name="iup8"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.6981 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top8"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="9.7660 8.0 1.2856"
+          material="ground_mat"/>    
+    <body name="ramp_down8" pos="11.5321 8.0 0.6428">
+      <geom name="idown8"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.6981 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+    <!-- 45 deg -->
+    <body name="ramp_up9" pos="14.0 8.0 0.7071">      
+      <geom name="iup9"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 -0.7854 0"
+            friction="0.8 0.1 0.01"/>
+    </body>
+    <geom name="ramp_top9"
+          type="box"
+          size="1.0 1.0 0.001"
+          pos="15.7071 8.0 1.4142"
+          material="ground_mat"/>    
+    <body name="ramp_down9" pos="17.4142 8.0 0.7071">
+      <geom name="idown9"
+            type="box"
+            size="1.0 1.0 0.001"
+            material="ramp_mat"
+            rgba="0.6 0.8 1 1"
+            euler="0 0.7854 0"       
+            friction="0.8 0.1 0.01"/>
+    </body>
+
+    <!-- ====================================================== -->
+    <!-- 2) STEPFIELD                                           -->
+    <!--    Different height blocks aligned and staggered       -->
+    <!-- ====================================================== -->
+    
+    <body name="stepfield" pos="2.0 -2.0 0">
+    
+		 <!-- Step 1: 1 cm -->
+		<geom name="step_01" type="box"
+			  size="1 1 0.005"
+			  pos="0 0 0.005"
+			  material="step_mat"/>
+
+		<!-- Step 2: 2 cm (+1 cm) -->
+		<geom name="step_02" type="box"
+			  size="1 1 0.015"
+			  pos="1 0 0.015"
+			  material="step_mat"/>
+
+		<!-- Step 3: 3 cm (+3 cm) -->
+		<geom name="step_03" type="box"
+			  size="1 1 0.03"
+			  pos="2 0 0.03"
+			  material="step_mat"/>
+
+		<!-- Step 4: 4 cm (+6 cm) -->
+		<geom name="step_04" type="box"
+			  size="1 1 0.05"
+			  pos="3 0 0.05"
+			  material="step_mat"/>
+
+		<!-- Step 5: 5 cm (+10 cm) -->
+		<geom name="step_05" type="box"
+			  size="1 1 0.075"
+			  pos="4 0 0.075"
+			  material="step_mat"/>
+
+		<!-- Step 6: 6 cm (+15 cm) -->
+		<geom name="step_06" type="box"
+			  size="1 1 0.105"
+			  pos="5 0 0.105"
+			  material="step_mat"/>
+
+		<!-- Step 7: 7 cm (+21 cm) -->
+		<geom name="step_07" type="box"
+			  size="1 1 0.14"
+			  pos="6 0 0.14"
+			  material="step_mat"/>
+
+		<!-- Step 8: 8 cm (+28 cm)-->
+		<geom name="step_08" type="box"
+			  size="1 1 0.18"
+			  pos="7 0 0.18"
+			  material="step_mat"/>
+
+		<!-- Step 9: 9 cm (+36 cm)-->
+		<geom name="step_09" type="box"
+			  size="1 1 0.225"
+			  pos="8 0 0.225"
+			  material="step_mat"/>
+
+		<!-- Step 10: 10 cm (+45 cm)-->
+		<geom name="step_10" type="box"
+			  size="1 1 0.275"
+			  pos="9 0 0.275"
+			  material="step_mat"/>
+
+		<!-- Step 11: 11 cm (+55 cm)-->
+		<geom name="step_11" type="box"
+			  size="1 1 0.330"
+			  pos="10 0 0.330"
+			  material="step_mat"/>
+
+		<!-- Step 12: 12 cm (+66 cm)-->
+		<geom name="step_12" type="box"
+			  size="1 1 0.390"
+			  pos="11 0 0.390"
+			  material="step_mat"/>
+
+		<!-- Step 13: 13 cm (+78 cm)-->
+		<geom name="step_13" type="box"
+			  size="1 1 0.455"
+			  pos="12 0 0.455"
+			  material="step_mat"/>
+
+		<!-- Step 14: 14 cm (+91 cm)-->
+		<geom name="step_14" type="box"
+			  size="1 1 0.525"
+			  pos="13 0 0.525"
+			  material="step_mat"/>
+
+		<!-- Step 15: 15 cm (+105 cm)-->
+		<geom name="step_15" type="box"
+			  size="1 1 0.600"
+			  pos="14 0 0.600"
+			  material="step_mat"/>
+
+	</body>    
+    
+    <!-- ====================================================== -->
+    <!-- 3) GAP                                                 -->
+    <!--   Platforms with a gap in between                 -->
+    <!-- ====================================================== -->
+    
+    <body name="gap_field1" pos="1.5 -5.0 0">
+
+		<geom name="gap_0"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="0 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 1 cm -->
+		<geom name="gap_1"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="1.01 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 2 cm -->
+		<geom name="gap_2"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="2.03 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 3 cm -->
+		<geom name="gap_3"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="3.07 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 4 cm -->
+		<geom name="gap_4"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="4.11 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 5 cm -->
+		<geom name="gap_5"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="5.16 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 6 cm -->
+		<geom name="gap_6"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="6.22 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 7 cm -->
+		<geom name="gap_7"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="7.29 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 8 cm -->
+		<geom name="gap_8"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="8.37 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 9 cm -->
+		<geom name="gap_9"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="9.46 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 10 cm -->
+		<geom name="gap_10"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="10.56 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 11 cm -->
+		<geom name="gap_11"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="11.67 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 12 cm -->
+		<geom name="gap_12"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="12.79 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 13 cm -->
+		<geom name="gap_13"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="13.92 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 14 cm -->
+		<geom name="gap_14"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="15.06 0 0.05"
+			  material="gap_mat"/>
+
+		<!-- gap 15 cm -->
+		<geom name="gap_15"
+			  type="box"
+			  size="0.5 1.0 0.05"
+			  pos="16.21 0 0.05"
+			  material="gap_mat"/>
+
+    <!-- Real gap is the empty space -1.0 y -0.8 aprox -->
+    <!-- Positions and sizes can be adjusted to reach  -->
+    <!-- widths of 0.2, 0.3, 0.4 m, etc.               -->
+	</body>
+
+    <!-- ====================================================== -->
+    <!-- 4) ROBOT INIT POSE                                     -->
+    <!-- ====================================================== -->
+    <body name="start_zone" pos="0 0 0.1">
+      <!-- visual marker green cyl -->
+      <geom type="cylinder"
+            size="0.05 0.001"
+            rgba="0 1 0 1"/>
+    </body>
+
+  </worldbody>
+
+</mujoco>
