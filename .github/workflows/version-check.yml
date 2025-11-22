@@ -1,0 +1,44 @@
+name: Version Increment Check
+
+on:
+  pull_request:
+    branches:
+      - ros-devel
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install xmllint
+      run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+    - name: Get current version from PR
+      id: current_version
+      run: |
+        current_version=$(xmllint --xpath "string(//package/version)" package.xml)
+        echo "current_version=$current_version" >> $GITHUB_ENV
+
+    - name: Get previous version from ros-devel
+      id: previous_version
+      run: |
+        git fetch origin ros-devel
+        git checkout origin/ros-devel
+        previous_version=$(xmllint --xpath "string(//package/version)" package.xml)
+        echo "previous_version=$previous_version" >> $GITHUB_ENV
+
+    - name: Compare versions
+      run: |
+        echo "Current version: $current_version"
+        echo "Previous version: $previous_version"
+        if [ "$current_version" == "$previous_version" ]; then
+          echo "Error: Version has not been incremented."
+          exit 1
+        fi
+      env:
+        current_version: ${{ env.current_version }}
+        previous_version: ${{ env.previous_version }}
+
