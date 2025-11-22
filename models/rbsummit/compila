@@ -1,0 +1,4 @@
+#!/bin/bash
+rm ./rbsummit1.xml
+compile rbsummit.urdf rbsummit1.xml
+simulate ./rbsummit1.xml
