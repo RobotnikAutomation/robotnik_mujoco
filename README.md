@@ -8,6 +8,14 @@ Have not been able to compile urdf with file:// nor package:// instead I have us
 Current controller uses diff_drive_base_controller (speed) instead of the robotnik_controllers one TBD)
 Tested with mujoco 3.3.7 and ros 2 humble
 
+# INSTALL:
+
+-Create mujoco_ws ros 2 workspace
+-Install mujoco 
+-Install https://github.com/moveit/mujoco_ros2_control and compile
+-Install https://github.com/RobotnikAutomation/robotnik_mujoco and compile
+
+
 # USAGE:
 
 >ros2 launch robotnik_mujoco rbsummit_world.launch.py
