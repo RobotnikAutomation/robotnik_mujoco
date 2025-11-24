@@ -19,6 +19,35 @@
     <material name="ramp_mat" rgba="0.6 0.8 1.0 1"/>
     <material name="gap_mat"  rgba="0.5 0.5 0.5 1"/>
     <material name="step_mat" rgba="0.8 0.7 0.5 1"/>
+
+	<!-- Sand texture img from png -->    
+    <texture name="sand_tex"
+             type="2d"
+             file="assets/sand-1024.png"/>
+
+    <!-- Material of the sand texture -->
+    <material name="sand_mat"
+              texture="sand_tex"
+              texrepeat="4 4"
+              texuniform="true"
+              reflectance="0.05"
+              specular="0.05"
+              shininess="0.2"/>   
+
+	<!-- Grass texture img from png -->    
+    <texture name="grass_tex"
+             type="2d"
+             file="assets/grass-1024.png"/>
+
+    <!-- Material of the sand texture -->
+    <material name="grass_mat"
+              texture="grass_tex"
+              texrepeat="4 4"
+              texuniform="true"
+              reflectance="0.05"
+              specular="0.05"
+              shininess="0.2"/>   
+
   </asset>
 
   <worldbody>
@@ -490,8 +519,42 @@
     <!-- widths of 0.2, 0.3, 0.4 m, etc.               -->
 	</body>
 
+
     <!-- ====================================================== -->
-    <!-- 4) ROBOT INIT POSE                                     -->
+    <!-- 4) DIFFERENT GROUND TERRAINS                           -->
+    <!-- ====================================================== -->
+	
+	<!-- Plane base 5 x 5 -->
+	<!-- Ground friction params = mu_slide mu_torsion mu_roll -->
+	<!-- Ground stiffness and damping params = solref solimp -->
+    
+	<!-- Sand patch -->
+	<body name="sand_ground" pos="-5.0 -5.0 0.0">
+	  <geom name="sand_patch"
+		  type="box"
+		  size="2.5 2.5 0.03"
+		  pos="0 0 0.03"
+		  material="sand_mat"
+		  friction="0.4 0.05 0.08"
+		  solref="0.02 1"
+		  solimp="0.95 0.99 0.001"/>
+	</body>
+
+	<!-- Grass ground -->
+	<body name="grass_ground" pos="-10.0 -5.0 0.0">
+      <geom name="grass_patch"
+		  type="box"
+		  size="2.5 2.5 0.03"              
+		  pos="0 0 0.03"               
+		  material="grass_mat"
+		  friction="0.6 0.15 0.04"     
+		  solref="0.015 1"             
+		  solimp="0.92 0.99 0.001"/> 
+	</body>
+
+
+    <!-- ====================================================== -->
+    <!-- 5) ROBOT INIT POSE                                     -->
     <!-- ====================================================== -->
     <body name="start_zone" pos="0 0 0">
       <!-- visual marker green cyl (better under clearance) -->
