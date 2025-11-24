@@ -57,7 +57,7 @@
                 <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />
             </body>
             <!-- IMU pose -->
-            <site name="imu_site" pos="0 0 0.1" size="0.01" rgba="0 1 0 1"/>
+            <site name="imu_site" pos="0 0 0.2" size="0.01" rgba="0 1 0 1"/>
         </body>
 	</worldbody>
 
@@ -72,7 +72,7 @@
 		           site="imu_site"/>
 
 	    <!-- Optional: frame orientation (for IMU data fusion) -->
-	   <framequat name="imu_quat"
+	    <framequat name="imu_quat"
 			       objtype="site" objname="imu_site"/>
 	</sensor>
 
