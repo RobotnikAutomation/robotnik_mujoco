@@ -493,8 +493,8 @@
     <!-- ====================================================== -->
     <!-- 4) ROBOT INIT POSE                                     -->
     <!-- ====================================================== -->
-    <body name="start_zone" pos="0 0 0.1">
-      <!-- visual marker green cyl -->
+    <body name="start_zone" pos="0 0 0">
+      <!-- visual marker green cyl (better under clearance) -->
       <geom type="cylinder"
             size="0.05 0.001"
             rgba="0 1 0 1"/>
