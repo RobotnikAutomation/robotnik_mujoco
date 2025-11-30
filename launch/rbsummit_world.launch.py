@@ -37,9 +37,9 @@ def generate_launch_description():
     #    get_package_share_directory('robotnik_controllers'))
 
     # TBD: use basic diff_drive_controller or the robotnik_controllers
-    #controller_config_file = os.path.join(robotnik_controllers_path, 'config', 'rbsummit_controller_params.yaml')
-    controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'diff_drive_controller.yaml')
-
+    #controller_config_file = os.path.join(robotnik_controllers_path, 'config', 'rbsummit_controller_params.yaml')    
+    controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'rbsummit_controller_params.yaml')
+  
     node_mujoco_ros2_control = Node(
         package='mujoco_ros2_control',
         executable='mujoco_ros2_control',
@@ -68,7 +68,7 @@ def generate_launch_description():
 
     load_robotnik_base_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-             'diff_drive_base_controller'],
+             'robotnik_base_controller'],             
         output='screen'
         #cmd=['ros2', 'topic', 'list'],
         #output='screen'

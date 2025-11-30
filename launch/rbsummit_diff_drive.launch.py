@@ -19,7 +19,6 @@ def generate_launch_description():
     
     #robotnik_description_path = os.path.join(
     #    get_package_share_directory('robotnik_description'))
-
     #xacro_file = os.path.join(robotnik_description_path,
     #                          'robots/rbsummit',
     #                          'rbsummit.urdf')  # make sure the arg prefix:=robot_ 
@@ -38,9 +37,9 @@ def generate_launch_description():
     #    get_package_share_directory('robotnik_controllers'))
 
     # TBD: use basic diff_drive_controller or the robotnik_controllers
+    #controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'rbsummit_controller_params.yaml')
     #controller_config_file = os.path.join(robotnik_controllers_path, 'config', 'rbsummit_controller_params.yaml')
-    #controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'diff_drive_controller.yaml')
-    controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'rbsummit_controller_params.yaml')
+    controller_config_file = os.path.join(robotnik_mujoco_path, 'config', 'diff_drive_controller.yaml')
 
     node_mujoco_ros2_control = Node(
         package='mujoco_ros2_control',
@@ -49,9 +48,7 @@ def generate_launch_description():
         parameters=[
             robot_description,
             controller_config_file,
-            #{'mujoco_model_path':os.path.join(robotnik_mujoco_path, 'models', 'rbsummit/rbsummit2.xml')}
-            #{'mujoco_model_path':os.path.join(robotnik_mujoco_path, 'models', 'rbsummit/world.xml')}
-            {'mujoco_model_path':os.path.join(robotnik_mujoco_path, 'worlds', 'world_rough_terrain.xml')}
+            {'mujoco_model_path':os.path.join(robotnik_mujoco_path, 'worlds', 'world.xml')}
         ]
     )
 
@@ -69,10 +66,10 @@ def generate_launch_description():
     )
 
     load_robotnik_base_controller = ExecuteProcess(
-        #cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-        #     'diff_drive_base_controller'],
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-             'robotnik_base_controller'],                          
+             'diff_drive_base_controller'],
+        #cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+        #     'robotnik_base_controller'],
         output='screen'
         #cmd=['ros2', 'topic', 'list'],
         #output='screen'

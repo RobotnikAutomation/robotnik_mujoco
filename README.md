@@ -5,7 +5,7 @@ A package to evaluate Robotnik robot dynamics in mujoco. The package links mujoc
 # NOTES: 
 Model compile requires stl to be in the urdf folder  
 Have not been able to compile urdf with file:// nor package:// instead I have used fixed folder paths  
-Current controller uses diff_drive_base_controller (speed) instead of the robotnik_controllers one TBD)  
+Usin robotnik_controllers package (robotnik_base_controller) optional diff_drive_base_controller
 Tested with mujoco 3.3.7 and ros 2 humble  
 
 # INSTALL:
@@ -24,4 +24,7 @@ Tested with mujoco 3.3.7 and ros 2 humble
 
 on a second terminal launch ps game pad or 
 
+>ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r cmd_vel:=/robotnik_base_controller/cmd_vel_unstamped
+
+for the diff drive controller:
 >ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r cmd_vel:=/diff_drive_base_controller/cmd_vel_unstamped
