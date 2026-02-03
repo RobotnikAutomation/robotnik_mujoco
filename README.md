@@ -18,9 +18,8 @@ Tested with mujoco 3.3.7 and ros 2 humble
 
 # USAGE:
 
->ros2 launch robotnik_mujoco rbsummit_world.launch.py
->ros2 launch rbsummit_world_rough_terrain.launch.py
->ros2 launch rbsummit_world_nist_arenas.launch.py
+>ros2 launch robotnik_mujoco rbwatcher_world.launch.py
+
 
 on a second terminal launch ps game pad or 
 
