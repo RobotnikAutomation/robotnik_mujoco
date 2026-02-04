@@ -15,6 +15,36 @@ Tested with mujoco 3.3.7 and ros 2 humble
 -Install https://github.com/moveit/mujoco_ros2_control and compile  
 -Install https://github.com/RobotnikAutomation/robotnik_mujoco and compile  
 
+# DOCKER WITH ALL INSTALLED:
+
+Create Image:
+
+```
+docker build -t docker/robotnik_mujoco_img .
+```
+
+Create Container:
+
+```
+sudo xhost +local:docker
+
+docker run -it \
+    --name mujoco_robotnik \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --network host \
+    --privileged \
+    robotnik_mujoco_img
+```
+
+Open new Terminal in a running container:
+
+```
+docker exec -it mujoco_robotnik bash
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+```
 
 # USAGE:
 
