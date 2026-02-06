@@ -1,0 +1,117 @@
+<mujoco model="rbwatcher">
+  <compiler angle="radian"/>
+  <option gravity="0 0 -9.81">
+		<flag contact="enable" />
+	</option>
+
+  <asset>
+    <mesh name="rbwatcher_chassis" file="rbwatcher_chassis.stl"/>
+    <mesh name="rbwatcher_top_structure" file="rbwatcher_top_structure.stl"/>
+    <mesh name="rubber_wheel" file="rubber_wheel.stl"/>
+    <mesh name="helios_16p" file="helios_16p.stl"/>
+    <mesh name="link_750_base" file="link_750_base.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link_750_pan" file="link_750_pan.stl"/>
+    <mesh name="link_750_tilt" file="link_750_tilt.stl"/>
+  </asset>
+
+  <worldbody>
+    <body name="robot_base_link" pos="-0.151427 0 0.25" euler="0 0 0">
+          <joint type="free" />
+
+          <geom pos="0 0 0.11" quat="1 0 0 0" type="mesh" rgba="0.1 0.1 0.1 1" mesh="rbwatcher_chassis"/>
+          <geom pos="-0.17024 0 0.38609" type="mesh" mesh="rbwatcher_top_structure"/>
+          <geom size="0.018 0.0185 0.0045" pos="-0.03534 0.132 0.27559" type="box" rgba="1 0 0 1"/>
+          <geom pos="-0.11924 0 0.49609" quat="1 0 0 0" type="mesh" mesh="helios_16p"/>
+          <geom size="0.012525 0.045 0.0125" pos="0.30881 0.0025 0.26243" type="box"/>
+          <geom pos="-0.18808 -0.07 0.61929" quat="1 0 0 0" type="mesh" rgba="0.1 0.1 0.1 1" mesh="link_750_base"/>
+          <geom size="0.03035 0.0415 0.01125" pos="-0.24824 0.095 0.88484" type="box"/>
+          <geom size="0.025 0.025 0.1" pos="-0.24824 0.095 0.50359" type="box" rgba="0.1 0.1 0.1 1"/>
+          <inertial pos="0 0 0" mass="25" diaginertia="2.203333 2.141666 1.141666"/>
+
+          <body name="robot_front_right_wheel" pos="0.229 -0.235 0.11" euler="0 0 0">
+                <joint name="robot_front_right_wheel_joint" type="hinge" axis="0 1 0" pos="0 0 0" damping="0.2" />                
+                <geom type="mesh" mesh="rubber_wheel"/>
+                <!-- inertial pos="0 0 0" mass="2" diaginertia="0.145833 0.145833 0.125" / -->
+                <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />                
+          </body> 
+          <body name="robot_front_left_wheel" pos="0.229 0.235 0.11" euler="0 0 0">							
+                <joint name="robot_front_left_wheel_joint" type="hinge" axis="0 1 0" pos="0 0 0" damping="0.2" />                
+                <geom type="mesh" mesh="rubber_wheel"/>
+                <!-- inertial pos="0 0 0" mass="2" diaginertia="0.145833 0.145833 0.125" / -->
+                <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />				
+          </body>
+          <body name="robot_back_left_wheel" pos="-0.229 0.235 0.11" euler="0 0 0">							
+                <joint name="robot_back_left_wheel_joint" type="hinge" axis="0 1 0" pos="0 0 0" damping="0.2" />
+                <!-- geom type="sphere" size="0.3" rgba="0 0 0 1" / -->
+                <geom type="mesh" mesh="rubber_wheel"/>
+                <!-- inertial pos="0 0 0" mass="2" diaginertia="0.145833 0.145833 0.125" / -->
+                <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />
+          </body>
+          <body name="robot_back_right_wheel" pos="-0.229 -0.235 0.11" euler="0 0 0">
+                <joint name="robot_back_right_wheel_joint" type="hinge" axis="0 1 0" pos="0 0 0" damping="0.2" />
+                <!-- geom type="sphere" size="0.3" rgba="0 0 0 1" / -->
+                <geom type="mesh" mesh="rubber_wheel"/>
+                <!-- inertial pos="0 0 0" mass="2" diaginertia="0.145833 0.145833 0.125" / -->
+                <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />
+          </body>
+
+          <!-- IMU pose -->
+          <site name="imu_site" pos="0 0 0.2" size="0.01" rgba="0 1 0 1"/>
+          <body name="lidar_assembly" pos="-0.18 0 0.45">
+            <replicate count="360" euler="0 0 0.0174533">
+              <site name="top_3d_laser" pos="0.1 0 0" euler="0 1.5708 0" size="0.01" group="3" rgba="0 0 0 0"/>
+            </replicate>
+          </body>
+          <site name="gps_antenna" pos="-0.24824 0.095 0.76359" size="0.01" rgba="1 1 0 1" group="4"/>
+
+          <body name="robot_front_rgbd_camera" pos="0.29881 0.0 0.15243">
+              <geom size="0.0125 0.045 0.0125" type="box" rgba="0.5 0.5 0.5 1"/>
+              <camera name="robot_front_rgbd_camera_color" pos="0 0 0" fovy="69" euler="0 -1.5708 0"/>
+          </body>
+
+          <body name="robot_top_ptz_camera_pan_link" pos="-0.11808 0 0.69609">
+            <inertial pos="0 0 0" mass="0.1" diaginertia="0.000201667 0.000184167 0.000184167"/>
+            <joint name="robot_top_ptz_camera_pan_joint" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159" actuatorfrcrange="-10000 10000"/>
+            <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="link_750_pan"/>
+            <body name="robot_top_ptz_camera_tilt_link" pos="0 0 0.102" quat="0.707107 0.707107 0 0">
+              <inertial pos="-0.00416667 0.00416667 0.00416667" quat="0.47727 0.763947 -0.0753349 0.427696" mass="0.12" diaginertia="0.000254535 0.000234879 0.000220086"/>
+              <joint name="robot_top_ptz_camera_tilt_joint" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-10000 10000"/>
+              <geom quat="0.707107 0.707107 0 0" type="mesh" rgba="0.1 0.1 0.1 1" mesh="link_750_tilt"/>
+              <body name="robot_top_ptz_camera_zoom_color_link" pos="0.05 0.025 0" quat="0 -0.707107 0 -0.707107">
+                <camera name="robot_top_ptz_camera" pos="0 0 0" fovy="45" euler="0 -1.5708 0"/>
+                <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="1e-05" diaginertia="2.01667e-08 1.84167e-08 1.84167e-08"/>
+                <joint name="robot_top_ptz_camera_zoom_color_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 30" actuatorfrcrange="-10000 10000"/>
+              </body>
+            </body>
+          </body>
+
+      </body>
+  </worldbody>
+
+  <!-- Sensores -->
+	<sensor>
+        <!-- Accelerometer (m/s^2 in body/site coords) -->
+	    <accelerometer name="imu_acc"
+				   site="imu_site"/>
+
+	    <!-- Gyro on the same site (rad/s) -->
+	    <gyro name="imu_gyro"
+		           site="imu_site"/>
+
+	    <!-- Optional: frame orientation (for IMU data fusion) -->
+	    <framequat name="imu_quat"
+			       objtype="site" objname="imu_site"/>
+      
+      <framepos name="gps_position" objtype="site" objname="gps_antenna"/>
+      <rangefinder name="lidar_main" site="top_3d_laser"/>
+
+	</sensor>
+
+    <contact>
+        <exclude body1="robot_base_link" body2="robot_front_left_wheel" />
+        <exclude body1="robot_base_link" body2="robot_front_right_wheel" />		
+        <exclude body1="robot_base_link" body2="robot_back_left_wheel" />
+        <exclude body1="robot_base_link" body2="robot_back_right_wheel" />
+    </contact>
+
+</mujoco>
