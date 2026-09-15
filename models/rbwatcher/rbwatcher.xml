@@ -56,8 +56,8 @@
           </body>
 
           <!-- IMU pose -->
-          <site name="imu_site" pos="0 0 0.2" size="0.01" rgba="0 1 0 1"/>
-          <body name="lidar_assembly" pos="-0.18 0 0.45">
+          <site name="imu_site" pos="-0.03534 0.132 0.16109" size="0.01" rgba="0 1 0 1"/>
+          <body name="lidar_assembly" pos="-0.11924 0 0.38609">
             <replicate count="360" euler="0 0 0.0174533">
               <site name="top_3d_laser" pos="0.1 0 0" euler="0 1.5708 0" size="0.01" group="3" rgba="0 0 0 0"/>
             </replicate>
@@ -66,10 +66,10 @@
 
           <body name="robot_front_rgbd_camera" pos="0.29881 0.0 0.15243">
               <geom size="0.0125 0.045 0.0125" type="box" rgba="0.5 0.5 0.5 1"/>
-              <camera name="robot_front_rgbd_camera_color" pos="0 0 0" fovy="69" euler="0 -1.5708 0"/>
+              <camera name="robot_front_rgbd_camera_color" pos="0 0 0" fovy="69" euler="1.5708 -1.5708 0" resolution="640 480"/>
           </body>
 
-          <body name="robot_top_ptz_camera_pan_link" pos="-0.11808 0 0.69609">
+          <body name="robot_top_ptz_camera_pan_link" pos="-0.11808 0 0.55429">
             <inertial pos="0 0 0" mass="0.1" diaginertia="0.000201667 0.000184167 0.000184167"/>
             <joint name="robot_top_ptz_camera_pan_joint" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159" actuatorfrcrange="-10000 10000"/>
             <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="link_750_pan"/>
@@ -78,7 +78,7 @@
               <joint name="robot_top_ptz_camera_tilt_joint" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-10000 10000"/>
               <geom quat="0.707107 0.707107 0 0" type="mesh" rgba="0.1 0.1 0.1 1" mesh="link_750_tilt"/>
               <body name="robot_top_ptz_camera_zoom_color_link" pos="0.05 0.025 0" quat="0 -0.707107 0 -0.707107">
-                <camera name="robot_top_ptz_camera" pos="0 0 0" fovy="45" euler="0 -1.5708 0"/>
+                <camera name="robot_top_ptz_camera" pos="0 0 0" fovy="45" euler="1.5708 -1.5708 0" resolution="640 480"/>
                 <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="1e-05" diaginertia="2.01667e-08 1.84167e-08 1.84167e-08"/>
                 <joint name="robot_top_ptz_camera_zoom_color_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 30" actuatorfrcrange="-10000 10000"/>
               </body>
@@ -91,7 +91,7 @@
   <!-- Sensores -->
 	<sensor>
         <!-- Accelerometer (m/s^2 in body/site coords) -->
-	    <accelerometer name="imu_acc"
+	    <accelerometer name="imu_accel"
 				   site="imu_site"/>
 
 	    <!-- Gyro on the same site (rad/s) -->
@@ -113,5 +113,13 @@
         <exclude body1="robot_base_link" body2="robot_back_left_wheel" />
         <exclude body1="robot_base_link" body2="robot_back_right_wheel" />
     </contact>
+
+    <!-- Actuators for wheel velocity control -->
+    <actuator>
+        <velocity name="robot_front_right_wheel_joint_actuator" joint="robot_front_right_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_front_left_wheel_joint_actuator" joint="robot_front_left_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_back_left_wheel_joint_actuator" joint="robot_back_left_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_back_right_wheel_joint_actuator" joint="robot_back_right_wheel_joint" kv="5" ctrlrange="-1 1"/>
+    </actuator>
 
 </mujoco>

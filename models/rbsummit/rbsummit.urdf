@@ -25,7 +25,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/bases/rbsummit/rbsummit_xl_chassis.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rbsummit_xl_chassis_collision.stl"/>
       </geometry>
       <material name="darkgrey">
         <color rgba="0.1 0.1 0.1 1"/>
@@ -34,7 +34,7 @@
     <collision>
       <origin rpy="0 0 0 " xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/bases/rbsummit/rbsummit_xl_chassis_collision.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rbsummit_xl_chassis_collision.stl"/>
       </geometry>
     </collision>
   </link>
@@ -60,7 +60,7 @@
     <visual>
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -68,7 +68,7 @@
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- sphere radius="0.11"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -90,7 +90,7 @@
     <visual>
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -98,7 +98,7 @@
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- sphere radius="0.11"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -129,7 +129,7 @@
     <visual>
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -137,7 +137,7 @@
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- sphere radius="0.11"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -166,7 +166,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -174,7 +174,7 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- sphere radius="0.11"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_description/meshes/wheels/rubber_wheel/rubber_wheel.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/rubber_wheel.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -200,7 +200,7 @@
         <color rgba="1 0 0 1"/>
       </material>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/imu/vectornav_vn100.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/vectornav_vn100.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -226,13 +226,13 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/3d_lidar/robotsense/helios_16p.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/helios_16p.stl"/>
       </geometry>
     </collision>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/3d_lidar/robotsense/helios_16p.stl"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/helios_16p.stl"/>
       </geometry>
       <material name="blackgray_color">
         <color rgba="0.25 0.25 0.25 1"/>
@@ -268,7 +268,7 @@
       <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0149 -0.0175 0"/>
       <geometry>
         <!-- <box size="${d435_cam_width} ${d435_cam_height} ${d435_cam_depth}"/> -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/depth/intel_realsense_d435/intel_d435.stl"/>        
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/intel_d435.stl"/>        
       </geometry>
     </visual>
     <collision>
@@ -354,14 +354,14 @@
         <color rgba="0.5 0.5 0.5 1"/>
       </material>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/gps/antenna_ANN_MB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/antenna_ANN_MB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.01125"/>
       <geometry>
         <!-- box size="0.0607 0.083 0.0225"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/gps/antenna_ANN_MB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/antenna_ANN_MB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
   </link>
@@ -382,26 +382,26 @@
         <color rgba="0.1 0.1 0.1 1"/>
       </material>
       <geometry>
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/gps/mastil_gps.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/mastil_gps.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <!--box size="0.05 0.05 0.2"/ -->
-        <mesh filename="/home/robert/mujoco_ws/src/robotnik_sensors/robotnik_sensors/meshes/gps/mastil_gps.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="package://robotnik_mujoco/models/rbsummit/mastil_gps.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
   </link>
 
   <ros2_control name="MujocoSystem" type="system">
     <hardware>
-      <plugin>mujoco_ros2_control/MujocoSystem</plugin>
+      <plugin>mujoco_ros2_control/MujocoSystemInterface</plugin>
+      <param name="mujoco_model">$(find robotnik_mujoco)/worlds/world.xml</param>
     </hardware>
 
     <joint name="robot_front_right_wheel_joint">
       <command_interface name="velocity" />
-      <command_interface name="effort" />
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -409,7 +409,6 @@
 
     <joint name="robot_front_left_wheel_joint">
       <command_interface name="velocity" />
-      <command_interface name="effort" />
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -417,18 +416,32 @@
     
     <joint name="robot_back_right_wheel_joint">
       <command_interface name="velocity" />
-      <command_interface name="effort" />
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="robot_back_left_wheel_joint">
       <command_interface name="velocity" />
-      <command_interface name="effort" />
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
+
+    <!-- IMU Sensor - connects to MuJoCo imu_quat, imu_gyro, imu_accel sensors -->
+    <sensor name="imu">
+      <param name="mujoco_type">imu</param>
+      
+      <state_interface name="orientation.x"/>
+      <state_interface name="orientation.y"/>
+      <state_interface name="orientation.z"/>
+      <state_interface name="orientation.w"/>
+      <state_interface name="angular_velocity.x"/>
+      <state_interface name="angular_velocity.y"/>
+      <state_interface name="angular_velocity.z"/>
+      <state_interface name="linear_acceleration.x"/>
+      <state_interface name="linear_acceleration.y"/>
+      <state_interface name="linear_acceleration.z"/>
+    </sensor>
   </ros2_control>
   
 </robot>

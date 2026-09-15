@@ -57,14 +57,14 @@
                 <inertial pos="0 0 0" mass="2" diaginertia="0.031849999999999996 0.039325 0.031849999999999996" />
             </body>
             <!-- IMU pose -->
-            <site name="imu_site" pos="0 0 0.2" size="0.01" rgba="0 1 0 1"/>
+            <site name="imu_site" pos="0.0385 0.132 0.158" size="0.01" rgba="0 1 0 1"/>
         </body>
 	</worldbody>
 
     <!-- Sensores -->
 	<sensor>
         <!-- Accelerometer (m/s^2 in body/site coords) -->
-	    <accelerometer name="imu_acc"
+	    <accelerometer name="imu_accel"
 				   site="imu_site"/>
 
 	    <!-- Gyro on the same site (rad/s) -->
@@ -82,5 +82,13 @@
         <exclude body1="base_link" body2="robot_back_left_wheel" />
         <exclude body1="base_link" body2="robot_back_right_wheel" />
     </contact>
-    
+
+    <!-- Actuators for wheel velocity control -->
+    <actuator>
+        <velocity name="robot_front_right_wheel_joint_actuator" joint="robot_front_right_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_front_left_wheel_joint_actuator" joint="robot_front_left_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_back_left_wheel_joint_actuator" joint="robot_back_left_wheel_joint" kv="5" ctrlrange="-1 1"/>
+        <velocity name="robot_back_right_wheel_joint_actuator" joint="robot_back_right_wheel_joint" kv="5" ctrlrange="-1 1"/>
+    </actuator>
+
 </mujoco>
