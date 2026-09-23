@@ -4,6 +4,10 @@ MuJoCo backend for the Robotnik RB-Watcher benchmark. The supported reference pl
 **Ubuntu 24.04 (Noble) with ROS 2 Jazzy**. Humble-era launch files, packages and APIs are not
 supported by the benchmark entrypoint.
 
+> **Work in Progress:** this repository is maintained for evaluation and
+> benchmarking purposes. It is not currently a complete production Robotnik
+> simulation stack.
+
 ## Stack version
 
 This workspace is validated with `ros-controls/mujoco_ros2_control` 0.1.2, branch `main`, commit
