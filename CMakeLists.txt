@@ -7,19 +7,30 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
 install(DIRECTORY
   config
   launch
   models
+  rviz
   worlds
   DESTINATION share/${PROJECT_NAME}/
 )
+
+install(PROGRAMS
+  scripts/generate_benchmark_assets.py
+  scripts/mujoco_state_bridge.py
+  scripts/robot_description_publisher.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  scripts/benchmark_mujoco.sh
+  DESTINATION share/${PROJECT_NAME}/scripts
+)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
+  find_package(ament_cmake_pytest REQUIRED)
   # the following line skips the linter which checks for copyrights
   # comment the line when a copyright and license is added to all source files
   set(ament_cmake_copyright_FOUND TRUE)
@@ -28,6 +39,7 @@ if(BUILD_TESTING)
   # a copyright and license is added to all source files
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+  ament_add_pytest_test(test_benchmark_assets tests/test_benchmark_assets.py)
 endif()
 
 ament_package()
